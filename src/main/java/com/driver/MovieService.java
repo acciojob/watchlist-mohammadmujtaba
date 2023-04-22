@@ -40,9 +40,7 @@ public class MovieService {
     }
 
     public ArrayList<Movie> getDirectorMovies(String director) {
-        ArrayList<Director> dir = movieRepository.getAllDirectors();
-
-        for(Director d : dir){
+        for(Director d : movieRepository.directors){
             if(d.getName().equals(director))
                 return movieRepository.getDirectorMovies(d);
         }
