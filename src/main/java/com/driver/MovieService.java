@@ -64,23 +64,19 @@ public class MovieService {
     }
 
     public Boolean deleteDirectorMovies(String name) {
-        for(Director director : movieRepository.directors ){
-
-            if(director.getName().equals(name)) {
-                movieRepository.directors.remove(director);
-                if(movieRepository.pair.containsKey(director)) {
-                    movieRepository.pair.remove(director);
-
-                    ArrayList<Movie> list = movieRepository.getDirectorMovies(director);
+        for(Director d : movieRepository.directors){
+            if(d.getName().equals(name)){
+                movieRepository.directors.remove(d);
+                if(movieRepository.pair.containsKey(d)) {
                     HashSet<Movie> hs = new HashSet<>();
-
-                    for (Movie m : list)
+                    for(Movie m : movieRepository.pair.get(d))
                         hs.add(m);
 
-                    for (Movie m : movieRepository.movies) {
-                        if (hs.contains(m))
+                    for(Movie m : movieRepository.movies){
+                        if(hs.contains(m))
                             movieRepository.movies.remove(m);
                     }
+                    movieRepository.pair.remove(d);
                 }
                 return true;
             }
@@ -89,9 +85,7 @@ public class MovieService {
     }
 
     public void deleteAllDirectorMovies() {
-        ArrayList<Director> list = movieRepository.getAllDirectors();
-
-        for(Director d : list)
+        for(Director d : movieRepository.directors)
             deleteDirectorMovies(d.getName());
     }
 }

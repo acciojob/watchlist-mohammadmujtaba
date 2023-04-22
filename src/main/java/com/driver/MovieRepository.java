@@ -37,11 +37,4 @@ public class MovieRepository {
         return new ArrayList<Movie>();
     }
 
-    public ArrayList<Director> getAllDirectors() {
-        ArrayList<Director> list = new ArrayList<>();
-        for(Director director : pair.keySet())
-            list.add(director);
-
-        return list;
-    }
 }
