@@ -14,7 +14,7 @@ public class MovieController {
     public ResponseEntity addMovie(@RequestBody Movie movie){
         Boolean added = movieService.addMovie(movie);
         if(added)
-            return new ResponseEntity("Success" , HttpStatus.OK);
+            return new ResponseEntity("success" , HttpStatus.OK);
 
         return new ResponseEntity(HttpStatus.valueOf(500));
     }
@@ -24,7 +24,7 @@ public class MovieController {
     public ResponseEntity addDirector(@RequestBody Director director){
         Boolean added = movieService.addDirector(director);
         if(added)
-            return new ResponseEntity("Success" , HttpStatus.OK);
+            return new ResponseEntity("success" , HttpStatus.OK);
 
         return new ResponseEntity( HttpStatus.valueOf(500));
     }
@@ -33,7 +33,7 @@ public class MovieController {
     public ResponseEntity addMovieDirectorPair(@RequestParam String movieName, @RequestParam String directorName ){
         Boolean added = movieService.addPair(movieName, directorName);
         if(added)
-            return new ResponseEntity("Success", HttpStatus.OK);
+            return new ResponseEntity("success", HttpStatus.OK);
 
         return new ResponseEntity(HttpStatus.valueOf(500));
     }
@@ -70,7 +70,7 @@ public class MovieController {
     public ResponseEntity deleteDirectorByName(@RequestParam String name){
        Boolean removed = movieService.deleteDirectorMovies(name);
        if(removed)
-           return new ResponseEntity("Success" , HttpStatus.OK);
+           return new ResponseEntity("success" , HttpStatus.OK);
 
        return new ResponseEntity( HttpStatus.NOT_FOUND);
     }
@@ -78,6 +78,6 @@ public class MovieController {
     @DeleteMapping("/delete-all-directors")
     public ResponseEntity deleteAllDirectors(){
         movieService.deleteAllDirectorMovies();
-        return new ResponseEntity("Success" , HttpStatus.OK);
+        return new ResponseEntity("success" , HttpStatus.OK);
     }
 }
