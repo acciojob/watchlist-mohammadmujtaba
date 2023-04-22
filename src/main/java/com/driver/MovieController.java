@@ -16,7 +16,7 @@ public class MovieController {
         if(added)
             return new ResponseEntity("Success" , HttpStatus.OK);
 
-        return new ResponseEntity("Movie is already present!", HttpStatus.valueOf(500));
+        return new ResponseEntity(HttpStatus.valueOf(500));
     }
 
 
@@ -26,7 +26,7 @@ public class MovieController {
         if(added)
             return new ResponseEntity("Success" , HttpStatus.OK);
 
-        return new ResponseEntity("Director is already present!", HttpStatus.valueOf(500));
+        return new ResponseEntity( HttpStatus.valueOf(500));
     }
 
     @PutMapping("/add-movie-director-pair")
@@ -35,7 +35,7 @@ public class MovieController {
         if(added)
             return new ResponseEntity("Success", HttpStatus.OK);
 
-        return new ResponseEntity("Failure" , HttpStatus.valueOf(500));
+        return new ResponseEntity(HttpStatus.valueOf(500));
     }
 
     @GetMapping("/get-movie-by-name/{name}")
@@ -44,7 +44,7 @@ public class MovieController {
         if(optionalMovie.isPresent())
             return new ResponseEntity(optionalMovie.get(), HttpStatus.OK);
 
-        return new ResponseEntity("Movie with name : " + name + " is not present!", HttpStatus.NOT_FOUND);
+        return new ResponseEntity( HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/get-director/by/name/{name}")
@@ -53,7 +53,7 @@ public class MovieController {
         if(optionalDirector.isPresent())
             return  new ResponseEntity(optionalDirector.get(), HttpStatus.OK);
 
-        return new ResponseEntity("Director with name : " + name + " is not present!", HttpStatus.NOT_FOUND);
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/get-movies-by-director-name/{director}")
@@ -72,7 +72,7 @@ public class MovieController {
        if(removed)
            return new ResponseEntity("Success" , HttpStatus.OK);
 
-       return new ResponseEntity("Director not found." , HttpStatus.NOT_FOUND);
+       return new ResponseEntity( HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/delete-all-directors")
